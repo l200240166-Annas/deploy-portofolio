@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Beranda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico?v=1">
+    <script>
+      tailwind.config = { darkMode: "class" };
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .bg-red-main {
+        background-color: #e11d48;
+      }
+      .text-shadow-custom {
+        text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.7);
+      }
+      .overlay-gradient {
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.4) 100%
+        );
+      }
+      @media (min-width: 1024px) {
+        .overlay-gradient {
+          background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.9) 30%,
+            rgba(0, 0, 0, 0.2) 100%
+          );
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-white dark:bg-slate-900 transition-colors duration-300">
+    <nav
+      class="bg-red-main dark:bg-slate-800 flex flex-col md:flex-row justify-between items-center px-6 py-4 text-white sticky top-0 z-50 shadow-lg"
+    >
+      <div class="text-xl font-black tracking-tighter mb-2 md:mb-0">
+        PEMROGRAMAN WEB
+      </div>
+      <div
+        class="flex gap-4 md:gap-8 font-bold text-[10px] md:text-sm uppercase tracking-widest items-center"
+      >
+        <a href="index.html" class="border-b-2 border-white">Home</a>
+        <a href="portofolio.html" class="opacity-70 hover:opacity-100">Portofolio</a>
+        <a href="contact.html" class="opacity-70 hover:opacity-100">Contact</a>
+        <button id="theme-toggle" class="p-2 bg-white/10 rounded-lg">
+          <span id="theme-toggle-icon">🌙</span>
+        </button>
+      </div>
+    </nav>
+
+    <section
+      class="relative min-h-screen flex flex-col lg:flex-row items-center px-6 lg:px-20 py-10 overflow-hidden"
+    >
+      <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 overlay-gradient z-10"></div>
+        <img
+          src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1352&q=80"
+          alt="Background"
+          class="w-full h-full object-cover"
+        >
+      </div>
+
+      <div class="w-full lg:w-1/2 z-20 text-center lg:text-left mt-10 lg:mt-0">
+        <h1
+          class="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-none mb-6 text-shadow-custom"
+        >
+          Informatics
+        </h1>
+        <p
+          class="text-white text-lg md:text-xl max-w-md mx-auto lg:mx-0 mb-10 font-medium text-shadow-custom opacity-90"
+        >
+          Halo, saya
+          <span class="font-black">Muhammad Annas Ardiansyah</span> mahasiswa
+          semester 4 Teknik Informatika di Universitas Muhammadiyah Surakarta.
+          Pada saat ini saya berfokus pada pengembangan website modern dengan
+          menggunakan bahasa pemrograman
+          <span class="font-black">HTML, CSS dan JavaScript</span>.
+        </p>
+        <a
+          href="portofolio.html"
+          class="inline-block bg-white text-rose-600 px-10 py-4 font-black uppercase text-xs tracking-widest hover:bg-slate-900 hover:text-white transition-all shadow-2xl"
+          >Lihat Karya</a>
+      </div>
+
+      <div class="w-full lg:w-1/2 flex justify-center items-center z-20 mt-12">
+        <div
+          class="relative w-56 h-56 md:w-80 md:h-80 lg:w-[450px] lg:h-[450px] border-4 md:border-8 border-white rounded-full overflow-hidden shadow-2xl"
+        >
+          <img
+            src="images/foto.jpg"
+            alt="Foto Profil"
+            class="absolute inset-0 w-full h-full object-cover"
+          >
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const themeToggleBtn = document.getElementById("theme-toggle");
+      const themeToggleIcon = document.getElementById("theme-toggle-icon");
+      const updateIcon = () => {
+        themeToggleIcon.innerText = document.documentElement.classList.contains(
+          "dark",
+        )
+          ? "☀️"
+          : "🌙";
+      };
+      updateIcon();
+      themeToggleBtn.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+        localStorage.setItem(
+          "theme",
+          document.documentElement.classList.contains("dark")
+            ? "dark"
+            : "light",
+        );
+        updateIcon();
+      });
+    </script>
+  </body>
+</html>
